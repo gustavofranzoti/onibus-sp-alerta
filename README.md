@@ -14,7 +14,7 @@ Interface com fonte grande e alto contraste. As permissões de GPS e notificaç�
 
 ## Como executar
 
-Pré-requisitos: Node.js 18+ e o app **Expo Go** no celular (Play Store / App Store).
+Pré-requisitos: Node.js (versão LTS) e o app **Expo Go** atualizado no celular (Play Store / App Store). O projeto usa o **Expo SDK 58**, compatível com o Expo Go atual.
 
 1. Crie sua conta em https://www.sptrans.com.br/desenvolvedores/ , acesse **Meus Aplicativos** e gere um token.
 2. Instale as dependências:
@@ -35,6 +35,14 @@ Pré-requisitos: Node.js 18+ e o app **Expo Go** no celular (Play Store / App St
 
 > Se alterar o `.env`, reinicie com `npx expo start -c`.
 
+### Problemas comuns
+
+- **Windows/PowerShell bloqueia `npm`/`npx`** ("a execução de scripts foi desabilitada"): na mesma janela, rode `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass`.
+- **Expo Go fica carregando ou mostra tela azul** (comum em redes de faculdade ou corporativas): use `npx expo start --tunnel` (exige conta Expo gratuita: `npx expo login`) ou conecte o celular Android por cabo USB:
+  1. Ative a **Depuração USB** no celular e instale o `platform-tools` (adb) no computador.
+  2. Rode `adb reverse tcp:8081 tcp:8081` e `npx expo start`, e aperte `a` no terminal (ou, no Expo Go, use *Enter URL manually* com `exp://localhost:8081`).
+- **"SPTrans recusou o token"**: gere ou confira o token em *Meus Aplicativos* no portal da SPTrans, atualize o `.env` e reinicie com `npx expo start -c`.
+
 ## Estrutura
 
 ```
@@ -54,7 +62,8 @@ src/components/             Button e Credits
 ## Limitações
 
 - O monitoramento roda enquanto o app está aberto (consulta a cada 30 s); não há tarefa em segundo plano.
-- A API não busca pontos por coordenadas; por isso o app usa o nome da rua obtido pelo GPS (geocodificação reversa) e filtra pela distância.
+- A API da SPTrans cobre apenas a **cidade de São Paulo**. Fora dela (ex.: ABC), o GPS funciona, mas não há pontos para listar; use a busca manual por uma rua da capital.
+- A API não busca pontos por coordenadas; por isso o app usa o nome da rua obtido pelo GPS (geocodificação reversa) e filtra pela distância. Como a SPTrans abrevia endereços ("R MANOEL COELHO"), o app tenta o nome completo, depois sem o tipo de via e por fim o nome principal.
 
 ## Créditos
 
