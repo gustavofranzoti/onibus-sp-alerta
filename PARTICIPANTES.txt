@@ -1,0 +1,21 @@
+GLOBAL SOLUTION 2026.2 - Cross-Platform Application Development
+Projeto: Ônibus SP Alerta
+
+PARTICIPANTES E DIVISÃO DO TRABALHO
+
+1. Gustavo Franzoti Gonçalves - RM566983 (RM566983@fiap.com.br)
+   - Integração com a API Olho Vivo: autenticação, busca de pontos e previsões
+     (src/services/olhoVivo.js, src/utils/arrivals.js, src/config.js)
+   - Tela de pontos próximos e busca manual (src/screens/NearbyScreen.js)
+   - Estrutura do projeto, App.js, README e publicação no GitHub
+
+2. Maykon Santana Fonseca - RM567041 (RM567041@fiap.com.br)
+   - GPS: permissão, posição atual e distância até os pontos
+     (src/services/location.js, src/utils/geo.js)
+   - Notificações, vibração e alertas: "Meu ônibus está chegando" e "Hora de sair"
+     (src/services/notifications.js, src/hooks/useBusAlert.js)
+   - Tela do ponto com previsões e configuração do alerta (src/screens/StopScreen.js)
+   - Tema de alto contraste e componentes (src/theme.js, src/components/)
+
+Em conjunto: testes no celular com o Expo Go e gravação do vídeo de demonstração.
+Todos os integrantes sabem explicar qualquer parte do código.

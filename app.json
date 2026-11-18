@@ -1,0 +1,27 @@
+{
+  "expo": {
+    "name": "Ônibus SP Alerta",
+    "slug": "onibus-sp-alerta",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "ios": {
+      "supportsTablet": false,
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Usamos sua localização para achar os pontos de ônibus mais próximos e calcular quando você deve sair de casa."
+      }
+    },
+    "android": {
+      "permissions": ["ACCESS_FINE_LOCATION", "ACCESS_COARSE_LOCATION", "VIBRATE"]
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Usamos sua localização para achar os pontos de ônibus mais próximos e calcular quando você deve sair de casa."
+        }
+      ],
+      "expo-notifications"
+    ]
+  }
+}
